@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>F0nd</title>
+<link rel="stylesheet" type="text/css" media="all" href="{{ url_for('static', filename='style.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mediaelementplayer.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='media-queries.css') }}" />
+
+<script type="text/javascript">
+	$.backstretch("../../static/images/bg/1.jpg");
+</script>
+</head>
+<style>
+    #lala input{
+    border-style: dashed;
+        display: block;
+background-color: transparent;
+border-radius: 3px;
+padding: 14px 14px;
+width: 600px;
+font-size: 20px;"
+    }
+
+</style>
+
+<body>
+<div class="scanlines"></div>
+
+<!-- Begin Header -->
+<div class="header-wrapper opacity">
+	<div class="header">
+		<!-- Begin Logo -->
+		<div class="logo">
+
+            Created By JN &nbsp;&nbsp; id: 2212900
+
+	    </div>
+		<!-- End Logo -->
+		<!-- Begin Menu -->
+		<div id="menu-wrapper">
+			<div id="menu" class="menu">
+                {% if g.user %}
+                    <ul id="tiny">
+					    <li class="active"><a href="{{ url_for('blog.index') }}" style="font-size: 18px;font-weight:bold">Pages</a> </li>
+					<li><a  style="font-size: 18px;font-weight:bold">My info</a>
+                        <ul>
+							<li><a href="{{ url_for('blog.homepage',id=g.user['userid']) }}" >My Blog</a></li>
+                            <li><a href="{{ url_for('blog.create') }}" >Create Blog</a></li>
+						</ul>
+                    </li>
+					<li><a style="font-size: 18px;font-weight:bold">History</a></li>
+                    <li> <a href="{{url_for("auth.logout")  }} " style="font-size: 18px;font-weight:bold">Logout</a> </li>
+                   </ul>
+                    {% else %}
+                         <ul id="tiny">
+                        <li class="active"> <a style="font-size: 18px;font-weight:bold;color: #fefac7">游客10086, 您好:</a></li>
+					    <li><a href="{{ url_for('blog.index') }}" style="font-size: 20px;font-weight:bold">Pages</a></li>
+					    <li><a href = "{{ url_for('auth.login') }}" style="font-size: 20px;font-weight:bold">Login</a></li>
+                        <li><a href="{{ url_for('auth.register') }}" class="action" style="font-size: 20px;font-weight:bold"> Register</a> </li>
+                   </ul>
+                    {% endif %}
+
+
+			</div>
+		</div>
+		<div class="clear"></div>
+		<!-- End Menu -->
+	</div>
+</div>
+<!-- End Header -->
+
+<!-- Begin Wrapper -->
+<div class="wrapper"><!-- Begin Intro -->
+<div class="intro"> 欢 迎 来 到 {{ post['username']}}  的 h0me page </div>
+<ul class="social">
+</ul><!-- End Intro -->
+
+
+                    <!--  这里开始写主页内容  包括个人信息和文章列表 -->
+
+<div class="box">
+
+		<h1 class="title">Modify</h1>
+
+		<div class="one-third">
+			<div class="outer none">
+                <span class="inset"><img src='../../static/images/homepage.jpg' alt="About" title="About" /></span>
+            </div>
+		</div>
+
+		<div class="two-third last">
+            <h2>Myself:</h2>
+
+            <form method="post" id="reg"  >
+
+
+            <div id=lala style="font-size: 20px;">
+
+                 <p>用户名：</p>
+                <input name="username" id="username"   value="{{ post['username'] }}" >
+                <p> 性别：</p>
+                <input name="sex" id="sex" value="{{ post['sex'] }}" style="font-size: 20px" >
+                <p> 年龄：</p>
+                <input name="age" id="age" value="{{ post['age'] }}" style="font-size: 20px" >
+                <p> 生日：</p>
+                <input name="birthday" id="birthday" value="{{ post['birthday'] }}" style="font-size: 20px" >
+                <p> 地区：</p>
+                <input name="area" id="area" value="{{ post['area'] }}">
+                <p> </p>>>
+                <input type="submit" name="submit" id="submit" value="修改">
+            </div>
+
+            </form>
+
+
+
+
+		</div>
+		<div class="clear"></div>
+
+</div>
+<!-- End Container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<script type="text/javascript" src="../../static/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../../static/js/ddsmoothmenu.js"></script>
+<script type="text/javascript" src="../../static/js/retina.js"></script>
+<script type="text/javascript" src="../../static/js/selectnav.js"></script>
+<script type="text/javascript" src="../../static/js/jquery.masonry.min.js"></script>
+<script type="text/javascript" src="../../static/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="../../static/js/jquery.backstretch.min.js"></script>
+<script type="text/javascript" src="../../static/js/mediaelement.min.js"></script>
+<script type="text/javascript" src="../../static/js/mediaelementplayer.min.js"></script>
+<script type="text/javascript" src="../../static/js/jquery.dcflickr.1.0.js"></script>
+<script type="text/javascript" src="../../static/js/twitter.min.js"></script>
+<script type="text/javascript" src="../../static/js/scripts.js"></script>
+
+</body>
+</html>

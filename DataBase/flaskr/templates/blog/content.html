@@ -1,0 +1,256 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>F0nd</title>
+<link rel="stylesheet" type="text/css" media="all" href="{{ url_for('static', filename='style.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mediaelementplayer.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='media-queries.css') }}" />
+
+<script type="text/javascript">
+	$.backstretch("../../static/images/bg/1.jpg");
+</script>
+</head>
+
+
+<body>
+<div class="scanlines"></div>
+
+
+<!-- Begin Header -->
+<div class="header-wrapper opacity">
+	<div class="header">
+		<!-- Begin Logo -->
+		<div class="logo">
+
+            Created By JN &nbsp;&nbsp; id: 2212900
+
+	    </div>
+		<!-- End Logo -->
+		<!-- Begin Menu -->
+		<div id="menu-wrapper">
+			<div id="menu" class="menu">
+                {% if g.user %}
+                    <ul id="tiny">
+					    <li class="active"><a href="{{ url_for('blog.index') }}" style="font-size: 18px;font-weight:bold">Pages</a> </li>
+					<li><a href="page-with-sidebar.html" style="font-size: 18px;font-weight:bold">My info</a>
+                        <ul>
+							<li><a href="" >My Blog</a></li>
+                            <li><a href="create.html" >Create Blog</a></li>
+						</ul>
+                    </li>
+					<li><a style="font-size: 18px;font-weight:bold">History</a></li>
+                    <li> <a href="{{url_for("auth.logout")  }} " style="font-size: 18px;font-weight:bold">Logout</a> </li>
+                   </ul>
+                    {% else %}
+                         <ul id="tiny">
+                        <li class="active"> <a style="font-size: 18px;font-weight:bold;color: #fefac7">游客10086, 您好:</a></li>
+					    <li><a href="{{ url_for('blog.index') }}" style="font-size: 20px;font-weight:bold">Pages</a></li>
+					    <li><a href = "{{ url_for('auth.login') }}" style="font-size: 20px;font-weight:bold">Login</a></li>
+                        <li><a href="{{ url_for('auth.register') }}" class="action" style="font-size: 20px;font-weight:bold"> Register</a> </li>
+                   </ul>
+                    {% endif %}
+
+
+			</div>
+		</div>
+		<div class="clear"></div>
+		<!-- End Menu -->
+	</div>
+</div>
+<!-- End Header -->
+
+<!-- Begin Wrapper -->
+<div class="wrapper"><!-- Begin Intro -->
+<div class="intro"> 欢 迎 来 到 Th1s  F0nd  的 bL0g </div>
+<ul class="social">
+
+</ul><!-- End Intro -->
+
+
+
+<!-- Begin Container -->
+<div class="content">
+
+		<!-- Begin Post -->
+		<div class="post format-image box"> 
+
+			<div class="details">
+				<span class="icon-quote">{{ post['time'] }}</span>
+				<span class="likes"><a href="#" class="likeThis">{{ post['likes'] }}</a></span>
+				<span class="comments"><a href="#">3</a></span>
+			</div>
+		
+			<h3 class="title">{{ post['title']}}</h3>
+			<p>
+                {{ post['body'] }}
+            </p>
+
+			<div class="tags"><a >journal</a>, <a >{{ post['label'] }}</a> </div>
+			
+			<div class="post-nav">
+
+				<div class="clear"></div>
+			</div>
+
+		</div>
+		<!-- End Post --> 	
+
+
+    <!-- Begin 评论 Form -->
+		<div id="comment-form" class="comment-form">
+
+			<div id="respond">
+						<h3 id="reply-title">Leave a Reply</h3>
+
+						<form  method="post" id="commentform">
+
+							<p class="comment-form-author">
+								<label for="author">Name</label> <span class="required">*</span>
+								<input id="author" name="author" type="text" value="" size="30" aria-required='true' />
+							</p>
+
+							<p class="comment-form-comment">
+								<label for="comment">Comment</label>
+								<textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea>
+							</p>
+							<p class="form-submit">
+								<input name="submit" type="submit" id="submit" value="Post Comment" />
+							</p>
+						</form>
+			</div><!-- #respond -->
+
+		</div>
+		<!-- End Form -->
+
+
+		<!-- Begin Comment Wrapper -->
+		<div id="comment-wrapper" class="box">
+		  
+		  <!-- Begin Comments -->
+		  <div id="comments">
+	            
+			<h3 id="comments-title">{{ len }} Responses to "Morning Glory"</h3>
+	    
+	        <ol id="singlecomments" class="commentlist">
+                <!--             for 循环                        -->
+
+               {% for review in reviews %}
+
+	      	<li class="comment">
+				<div class="comment">
+					<div class="comment-author vcard user frame">
+						<img alt="" src='' class='avatar avatar-70 photo' height='70' width='70' />
+					</div>
+					<div class="message">
+						<span class="reply-link"><a class="comment-reply-link" href="{{url_for("article.deletereview",id=post["contentid"],reviewid=review["reviewid"])}}">delete</a></span>
+						<div class="info">
+							<h2>{{ review['observer'] }}</h2>
+							<span class="meta">{{ review['time'] }} pm</span>
+						</div>
+						<div class="comment-body ">
+                            <p>{{ review['article'] }}</p>>
+                        </div>
+						<span class="edit-link"></span>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</li>
+            {% endfor %}
+			</ol>
+		</div>
+		<!-- End Comments -->
+	
+
+		</div>
+		<!-- End Comment Wrapper -->
+
+</div>
+<!-- End Container -->
+
+
+<!-- Begin Sidebar -->
+<div class="sidebar box">
+  <div class="sidebox widget">
+			<h3 class="widget-title">Popular Posts</h3>
+			<ul class="post-list">
+			  	<li> 
+			  		<div class="frame">
+			  			<a href="#"><img src="../../static/images/art/s1.jpg" /></a>
+			  		</div>
+					<div class="meta">
+					    <h6><a href="#">第一篇</a></h6>
+					    <em>28th Sep 2012</em>
+				    </div>
+				</li>
+				<li> 
+			  		<div class="frame">
+			  			<a href="#"><img src="../../static/images/art/s2.jpg" /></a>
+			  		</div>
+					<div class="meta">
+					    <h6><a href="#">第二篇</a></h6>
+					    <em>5th Sep 2012</em>
+				    </div>
+				</li>
+				<li> 
+			  		<div class="frame">
+			  			<a href="#"><img src="../../static/images/art/s3.jpg" /></a>
+			  		</div>
+					<div class="meta">
+					    <h6><a href="#">第三篇</a></h6>
+					    <em>26th Sep 2012</em>
+				    </div>
+				</li>
+			</ul>
+			
+	</div>
+	
+
+
+	<div class="sidebox widget">
+		<h3 class="widget-title">`呜呜呜`</h3>
+        <div>
+            真的没时间在写了，数基杀我
+        </div>>
+
+        </div>
+	
+	<div class="sidebox widget">
+		<h3 class="widget-title">Labels</h3>
+			<ul>
+				<li><a href="#">表白季</a></li>
+				<li><a href="#">情感</a></li>
+				<li><a href="#">人间四月天</a></li>
+				<li><a href="#">暖春心动季</a></li>
+				<li><a href="#">宿舍情谊</a></li>
+				<li><a href="#">一杯奶茶</a></li>
+				<li><a >午后</a></li>
+				<li><a >考试</a>
+			</li>
+		</ul>
+</div></div>
+<!--End Sidebar -->
+<div class="clear"></div>
+
+</div>
+<!-- End Wrapper -->
+
+
+
+
+
+<script type="text/javascript" src="../../static/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../../static/js/ddsmoothmenu.js"></script>
+<script type="text/javascript" src="../../static/js/retina.js"></script>
+<script type="text/javascript" src="../../static/js/selectnav.js"></script>
+<script type="text/javascript" src="../../static/js/jquery.masonry.min.js"></script>
+<script type="text/javascript" src="../../static/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="../../static/js/jquery.backstretch.min.js"></script>
+<script type="text/javascript" src="../../static/js/mediaelement.min.js"></script>
+<script type="text/javascript" src="../../static/js/jquery.dcflickr.1.0.js"></script>
+<script type="text/javascript" src="../../static/js/twitter.min.js"></script>
+<script type="text/javascript" src="../../static/js/scripts.js"></script>
+</body>
+</html>

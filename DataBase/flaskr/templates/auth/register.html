@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Obscura</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../static/style.css" />
+<link rel="stylesheet" type="text/css" href="../../static/css/media-queries.css" />
+<link rel="stylesheet" type="text/css" href="../../static/mediaelementplayer.css" />
+
+<script type="text/javascript" src="../../static/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../../static/js/ddsmoothmenu.js"></script>
+<script type="text/javascript" src="../../static/js/retina.js"></script>
+<script type="text/javascript" src="../../static/js/selectnav.js"></script>
+<script type="text/javascript" src="../../static/js/jquery.masonry.min.js"></script>
+<script type="text/javascript" src="../../static/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="../../static/js/jquery.backstretch.min.js"></script>
+<script type="text/javascript" src="../../static/js/mediaelement.min.js"></script>
+<script type="text/javascript" src="../../static/js/mediaelementplayer.min.js"></script>
+<script type="text/javascript" src="../../static/js/jquery.dcflickr.1.0.js"></script>
+<script type="text/javascript" src="../../static/js/twitter.min.js"></script>
+<script type="text/javascript">
+	$.backstretch("../../static/images/bg/1.jpg");
+</script>
+</head>
+
+<body>
+<div class="scanlines"></div>
+<!-- Begin Header -->
+<div class="header-wrapper opacity">
+	<div class="header">
+		<!-- Begin Logo -->
+		<div class="logo">
+
+            Created By LJN &nbsp;&nbsp; id: 2212900
+
+	    </div>
+		<!-- End Logo -->
+		<!-- Begin Menu -->
+		<div id="menu-wrapper">
+			<div id="menu" class="menu">
+				<ul id="tiny">
+					<li class="active"><a href="index.html">Blog</a>
+						<ul>
+							<li><a href="myblog.html">My Blog</a></li>
+                            <li><a href="create.html">Create Blog</a></li>
+						</ul>
+					</li>
+					<li><a href="page-with-sidebar.html">Pages</a>
+						<!-- <ul>
+							<li><a href="page-with-sidebar.html">Page With Sidebar</a></li>
+							<li><a href="full-width.html">Full Width</a></li>
+						</ul>-->
+					</li>
+
+					<li>
+                        <a >History</a>
+						<!--<ul>
+							<li><a href="">Typography</a></li>
+							<li><a href="columns.html">Columns</a></li>
+						</ul>-->
+					</li>
+                    <li>
+
+                    {% if g.user %}
+                        <a href="../auth/register.html" class="action" > {{ g.user }}</a>
+                    {% endif %}
+					{% if not g.user %}
+                        <a href="../auth/register.html">Login</a>
+                    {% endif %}
+                    </li>
+				</ul>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<!-- End Menu -->
+	</div>
+</div>
+<!-- End Header -->
+
+
+
+<!-- Begin Wrapper -->
+<div class="wrapper"><!-- Begin Intro -->
+<div class="intro"> </div>
+
+
+<!-- Begin Container -->
+<div class="box">
+
+	<h1 class="title">Register</h1>
+	
+
+	<div class="one-half">
+
+		<h3>Input your infor</h3>
+           <form method="post" id="reg">
+            <div>
+            <input class="info-box" name="username" id="username" style=" font-size:18px;color:white" placeholder="用户名">
+            </div>
+                <div>
+                <input class="download-box" placeholder="密码" type="password" name="password" id="password" style="font-size:18px;color:white" >
+           </div>
+            <input class="warning-box" placeholder="邮箱" type="text" class="button blue" style="font-size:18px;color:white" >
+             <div>
+               <input type="submit" class="note-box"  value="注册！" name="email" id="email"  style=" font-size:19px;color:gray" >
+            </div>
+           </form>
+	</div>
+
+
+	<div class="one-half last">
+		<!--
+        <h3>Buttons</h3>
+		<a href="#" class="button">Default Button</a>
+		<br />
+		<a href="#" class="button blue">Blue Button</a>
+		<a href="#" class="button green">Green Button</a>
+		<a href="#" class="button pink">Pink Button</a>
+		<a href="#" class="button purple">Purple Button</a>
+		<a href="#" class="button red">Red Button</a>
+		-->
+        <br />
+        </div>
+
+
+</div>
+<!-- End Container -->
+
+</div>
+<!-- End Wrapper -->
+
+
+
+
+
+
+<script type="text/javascript" src="../../static/js/scripts.js"></script>
+</body>
+</html>

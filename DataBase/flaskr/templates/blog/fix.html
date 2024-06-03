@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>F0nd</title>
+<link rel="stylesheet" type="text/css" media="all" href="{{ url_for('static', filename='style.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mediaelementplayer.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='media-queries.css') }}" />
+<style>
+.chk_1{
+    display: none;
+
+}
+
+    .chk_1 + label {
+    float: left;
+        height: 22px;
+    background-color: #FFF;
+    border: 1px solid #C1CACA;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset -5px -15px 10px -12px rgba(0, 0, 0, 0.05);
+    padding: 9px;
+    border-radius: 6px;
+    display: inline-block;
+    position: relative;
+    margin-right: 30px;
+}
+.chk_1 + label:active {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+}
+
+.chk_1:checked + label {
+    background-color: #ECF2F7;
+    border: 1px solid #92A1AC;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05), inset 15px 10px -12px rgba(255, 255, 255, 0.1);
+    color: #243441;
+}
+
+.chk_1:checked + label:after {
+
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: #758794;
+    width: 100%;
+    text-align: center;
+    font-size: 1.4em;
+    padding: 1px 0 0 0;
+    vertical-align: text-top;
+}
+
+</style>
+<script type="text/javascript">
+	$.backstretch("../../static/images/bg/1.jpg");
+</script>
+</head>
+
+
+<body>
+<div class="scanlines"></div>
+
+<!-- Begin Header -->
+<div class="header-wrapper opacity">
+	<div class="header">
+		<!-- Begin Logo -->
+		<div class="logo">
+
+            Created By JN &nbsp;&nbsp; id: 2212900
+
+	    </div>
+		<!-- End Logo -->
+		<!-- Begin Menu -->
+		<div id="menu-wrapper">
+			<div id="menu" class="menu">
+                {% if g.user %}
+                    <ul id="tiny">
+					    <li class="active"><a href="{{ url_for('blog.index') }}" style="font-size: 18px;font-weight:bold">Pages</a> </li>
+					<li><a  style="font-size: 18px;font-weight:bold">My info</a>
+                        <ul>
+							<li><a href="#" >My Blog</a></li>
+                            <li><a href="create.html" >Create Blog</a></li>
+						</ul>
+                    </li>
+					<li><a style="font-size: 18px;font-weight:bold">History</a></li>
+                    <li> <a href="{{url_for("auth.logout")  }} " style="font-size: 18px;font-weight:bold">Logout</a> </li>
+                   </ul>
+                    {% else %}
+                         <ul id="tiny">
+                        <li class="active"> <a style="font-size: 18px;font-weight:bold;color: #fefac7">游客10086, 您好:</a></li>
+					    <li><a href="{{ url_for('blog.index') }}" style="font-size: 20px;font-weight:bold">Pages</a></li>
+					    <li><a href = "{{ url_for('auth.login') }}" style="font-size: 20px;font-weight:bold">Login</a></li>
+                        <li><a href="{{ url_for('auth.register') }}" class="action" style="font-size: 20px;font-weight:bold"> Register</a> </li>
+                   </ul>
+                    {% endif %}
+
+
+			</div>
+		</div>
+		<div class="clear"></div>
+		<!-- End Menu -->
+	</div>
+</div>
+<!-- End Header -->
+
+<!-- Begin Wrapper -->
+<div class="wrapper"><!-- Begin Intro -->
+<div class="intro"> 欢 迎 来 到 fond  的 h0me page </div>
+<ul class="social">
+</ul><!-- End Intro -->
+
+
+                        <!-- Begin 提交文章 Form -->
+		<div id="comment-form" class="comment-form">
+
+			<div id="respond">
+						<h3 id="reply-title">Start one article!</h3>
+
+						<form  method="post" id="commentform">
+
+							<p class="comment-form-author">
+								<label for="title">Title</label> <span class="required">*</span>
+								<input id="title" name="title" type="text" value="{{ post['title'] }}" size="30" aria-required='true' />
+							</p>
+					        <p class="comment-form-author">
+								<label for="head">Head</label> <span class="required">*</span>
+								<input id="head" name="head" type="text" value="{{ post['head'] }}" size="45" aria-required='true' />
+							</p>
+							<p class="comment-form-comment">
+								<label for="content">Content</label>
+								<textarea id="content" name="content" cols="45" rows="8"   aria-required="true">{{ post['body'] }}</textarea>
+							</p>
+
+
+							<p class="form-submit">
+								<input name="submit" type="submit" id="submit" value="FIX!" style="float:right;height: 45px"/>
+							</p>
+
+
+
+
+						</form>
+			</div><!-- #respond -->
+
+		</div>
+		<!-- End Form -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<script type="text/javascript" src="../../static/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../../static/js/ddsmoothmenu.js"></script>
+<script type="text/javascript" src="../../static/js/retina.js"></script>
+<script type="text/javascript" src="../../static/js/selectnav.js"></script>
+<script type="text/javascript" src="../../static/js/jquery.masonry.min.js"></script>
+<script type="text/javascript" src="../../static/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="../../static/js/jquery.backstretch.min.js"></script>
+<script type="text/javascript" src="../../static/js/mediaelement.min.js"></script>
+<script type="text/javascript" src="../../static/js/mediaelementplayer.min.js"></script>
+<script type="text/javascript" src="../../static/js/jquery.dcflickr.1.0.js"></script>
+<script type="text/javascript" src="../../static/js/twitter.min.js"></script>
+<script type="text/javascript" src="../../static/js/scripts.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+create table userinfo(
+id ,
+username,
+password,
+profile,
+region,
+telephone,
+primary key (id)
+);
+video
+
+
+
+创建数据库表

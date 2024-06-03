@@ -1,0 +1,247 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>F0nd</title>
+<link rel="stylesheet" type="text/css" media="all" href="{{ url_for('static', filename='style.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mediaelementplayer.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='media-queries.css') }}" />
+
+<script type="text/javascript">
+	$.backstretch("../../static/images/bg/1.jpg");
+</script>
+</head>
+
+
+<body>
+<div class="scanlines"></div>
+
+<!-- Begin Header -->
+<div class="header-wrapper opacity">
+	<div class="header">
+		<!-- Begin Logo -->
+		<div class="logo">
+
+            Created By JN &nbsp;&nbsp; id: 2212900
+
+	    </div>
+		<!-- End Logo -->
+		<!-- Begin Menu -->
+		<div id="menu-wrapper">
+			<div id="menu" class="menu">
+                {% if g.user %}
+                    <ul id="tiny">
+					    <li class="active"><a href="{{ url_for('blog.index') }}" style="font-size: 18px;font-weight:bold">Pages</a> </li>
+					<li><a  style="font-size: 18px;font-weight:bold">My info</a>
+                        <ul>
+							<li><a href="{{ url_for('blog.homepage',id=g.user['userid']) }}" >My Blog</a></li>
+                            <li><a href="{{ url_for('blog.create') }}" >Create Blog</a></li>
+						</ul>
+                    </li>
+					<li><a href="{{url_for('blog.history')  }}" style="font-size: 18px;font-weight:bold">History</a></li>
+                    <li> <a href="{{url_for("auth.logout")  }} " style="font-size: 18px;font-weight:bold">Logout</a> </li>
+                   </ul>
+                    {% else %}
+                         <ul id="tiny">
+                        <li class="active"> <a style="font-size: 18px;font-weight:bold;color: #fefac7">游客10086, 您好:</a></li>
+					    <li><a href="{{ url_for('blog.index') }}" style="font-size: 20px;font-weight:bold">Pages</a></li>
+					    <li><a href = "{{ url_for('auth.login') }}" style="font-size: 20px;font-weight:bold">Login</a></li>
+                        <li><a href="{{ url_for('auth.register') }}" class="action" style="font-size: 20px;font-weight:bold"> Register</a> </li>
+                   </ul>
+                    {% endif %}
+
+
+			</div>
+		</div>
+		<div class="clear"></div>
+		<!-- End Menu -->
+	</div>
+</div>
+<!-- End Header -->
+
+<!-- Begin Wrapper -->
+<div class="wrapper"><!-- Begin Intro -->
+<div class="intro"> 欢 迎 来 到 Th1s  F0nd  的 bL0g </div>
+    <div class="sidebox widget">
+		<form class="searchform" method="get" >
+			<input type="text" name="search" value="Search" onFocus="this.value=''" onBlur="this.value='type and hit enter'"/>
+
+		</form>
+	</div>
+<ul class="social">
+
+</ul><!-- End Intro -->
+
+
+
+
+                                   <!-- 这里开始写内容-->
+
+<!-- Begin Blog Grid -->
+<div class="blog-wrap">
+	<!-- Begin Blogs -->
+
+	<div class="blog-grid">
+		<!-- Begin Image Format -->
+		<div class="post format-image box"> 
+			<div class="frame">
+				<a href="post.html">
+					<img src="../../static/images/art/12.jpg" alt="" />
+				</a>
+			</div>
+			<h2 class="title"><a href="{{ url_for("article.content", id=posts[0]['id']) }}">{{ posts[0]['title'] }}</a></h2>
+			<p> {{ posts[0]['head'] }}</p>
+
+			<div class="details">
+				<span class="icon-image"><a >{{ posts[0]["time"]}}</a></span>
+				<span class="likes"><a  class="likeThis">{{ posts[0]['likes'] }}</a></span>
+				<span class="comments"><a >3</a></span>
+			</div>
+		</div>
+		<!-- End Image Format1 -->
+
+ 	
+		<!-- Begin Quote Format2 -->
+		<div class="post format-quote box">
+            <h2 class="title"><a href="{{ url_for("article.content", id=posts[1]['id']) }}">{{ posts[1]["title"] }}</a></h2>
+			<blockquote>{{ posts[1]["head"] }}<cite>{{ posts[1]["owner"]}}</cite></blockquote>
+			<div class="details">
+				<span class="icon-quote"><a href="#">{{ posts[1]["time"]}}</a></span>
+				<span class="likes"><a href="#" class="likeThis">27</a></span>
+				<span class="comments"><a href="#">4</a></span>
+			</div>
+	
+		</div>
+		<!-- End Quote Format --> 	
+
+
+		<!-- Begin Video Format3 -->
+		<div class="post format-video box"> 
+
+			<h2 class="title"><a href="{{ url_for("article.content", id=posts[2]['id']) }}">{{ posts[2]["title"] }}</a></h2>
+			<p> {{ posts[2]['head'] }}</p>
+
+			<div class="details">
+				<span class="icon-quote"><a href="#">September 13, 2012</a></span>
+				<span class="likes"><a href="#" class="likeThis">18</a></span>
+				<span class="comments"><a href="#">1</a></span>
+			</div>
+			
+		</div>
+		<!-- End Video Format3 -->
+
+
+		<!-- Begin Audio Format4 -->
+		<div class="post format-audio box">
+			<div class="audio-wrapper">
+				<div class="vinyl">
+					<dl>
+						<dt class="art">
+							<img class="highlight" src="../../static/images/vinyl.png" />
+							<img src="../../static/images/art/晴天.jpg" alt="" />
+						</dt>
+                            <dd class="song"><div class="icon-song"></div> 曲：周杰伦</dd>
+                            <dd class="artist"><div class="icon-artist"></div> 词：方文山</dd>
+                            <dd class="album"><div class="icon-album"></div> 专：叶惠美</dd>
+					</dl>
+				</div>
+
+			</div>
+			<p><strong>故事的小黄花<p>从出生那年就飘着 <p>童年的荡秋千 <p>随记忆一直晃到现在</strong>
+			<div class="details">
+				<span class="icon-audio"><a href="#">September 7, 2012</a></span>
+				<span class="likes"><a href="#" class="likeThis">20</a></span>
+				<span class="comments"><a href="#">1</a></span>
+			</div>
+		</div>
+		<!-- End Audio Format -->
+
+
+ 		<!-- Begin Standard Format4 -->
+ 		<div class="post format-standard box"> 
+
+			<h2 class="title"><a href="{{ url_for("article.content", id=posts[3]['id']) }}">{{ posts[3]['title']}}</a></h2>
+			{{ posts[3]['body'] }}<p><p>
+			<div class="details">
+				<span class="icon-standard"><a href="#">{{ posts[3]['time'] }}</a></span>
+				<span class="likes"><a href="#" class="likeThis">{{ posts[3]['likes'] }}</a></span>
+				<span class="comments"><a href="#">0</a></span>
+			</div>
+	
+		</div>
+		<!-- End Standard Format --> 					
+
+
+		<!-- Begin Link Format -->
+		<div class="post format-link box"> 
+
+			<h2 class="title"><a href="{{ url_for("article.content", id=posts[4]['id']) }}" >{{ posts[4]['title']}}<span class="arrow">&rarr;</span></a></h2>
+			<p> {{ posts[4]['head'] }}</p>
+			<div class="details">
+				<span class="icon-link"><a href="#">July 13, 2012</a></span>
+				<span class="likes"><a href="#" class="likeThis">10</a></span>
+				<span class="comments"><a href="#">0</a></span>
+			</div>
+		
+		</div>
+		<!-- End Link Format --> 					
+
+
+		<!-- Begin Chat Format -->
+		<div class="post format-chat box"> 
+			<h2 class="title"><a href="{{ url_for("article.content", id=posts[5]['id']) }}">{{ posts[5]['title']}}</a></h2>
+	        {{ posts[5]['head'] }}<p>
+			<div class="details">
+				<span class="icon-chat"><a href="#">June 13, 2012</a></span>
+				<span class="likes"><a href="#" class="likeThis">5</a></span>
+				<span class="comments"><a href="#">0</a></span>
+			</div>
+			
+		</div>
+		<!-- End Chat Format -->
+
+        <div class="post format-chat box">
+			<h2 class="title"><a href="{{ url_for("article.content", id=posts[6]['id']) }}">{{ posts[6]['title']}}</a></h2>
+	        {{ posts[6]['head'] }}<p>
+			<div class="details">
+				<span class="icon-chat"><a href="#">June 13, 2012</a></span>
+				<span class="likes"><a href="#" class="likeThis">5</a></span>
+				<span class="comments"><a href="#">0</a></span>
+			</div>
+
+		</div>
+
+
+
+ 	</div>
+	<!-- End Blog -->
+</div>
+<!-- End Blog Grid -->
+
+<!-- Begin Page-navi -->
+    <div id="navigation">
+      <div class="nav-previous"><a href="#" ><span class="meta-nav-prev">&larr; Older posts</span></a></div>
+      <!-- 
+			<div class="nav-next"><a href="#" ><span class="meta-nav-next">Newer posts &rarr;</span></a></div>
+			 --> 
+    </div>
+    <!-- End Page-navi --> 
+
+</div>
+<!-- End Wrapper -->
+<script type="text/javascript" src="../../static/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../../static/js/ddsmoothmenu.js"></script>
+<script type="text/javascript" src="../../static/js/retina.js"></script>
+<script type="text/javascript" src="../../static/js/selectnav.js"></script>
+<script type="text/javascript" src="../../static/js/jquery.masonry.min.js"></script>
+<script type="text/javascript" src="../../static/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="../../static/js/jquery.backstretch.min.js"></script>
+<script type="text/javascript" src="../../static/js/mediaelement.min.js"></script>
+<script type="text/javascript" src="../../static/js/mediaelementplayer.min.js"></script>
+<script type="text/javascript" src="../../static/js/jquery.dcflickr.1.0.js"></script>
+<script type="text/javascript" src="../../static/js/twitter.min.js"></script>
+<script type="text/javascript" src="../../static/js/scripts.js"></script>
+
+</body>
+</html>
